@@ -10,6 +10,7 @@ import { MapComponent } from './map/map.component';
 import { AppFilterComponent } from './app-filter/app-filter.component';
 import { NearbyPlacesComponent } from './nearby-places/nearby-places.component';
 import { PictureOfTheDayComponent } from './picture-of-the-day/picture-of-the-day.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PictureOfTheDayComponent } from './picture-of-the-day/picture-of-the-da
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

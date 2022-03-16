@@ -2,3 +2,17 @@
 
 <!--Here's how we can access the 'filter' component from here-->
 <app-filter></app-filter>
+
+<!---->
+<tr *ngFor = "let launchpad of launchpads">
+    <td>{{launchpad.name + ", " + launchpad.latitude + ", " + launchpad.longitude + ": "+launchpad.launches}}</td>
+
+</tr>
+
+
+<h2 *ngIf = "launch != undefined" >{{launch.name}}</h2>
+
+<tr *ngFor = "let starlink of starlinks">
+    <p>{{starlink.id + ", " + starlink.latitude + ", " + starlink.longitude}}</p>
+
+</tr>
