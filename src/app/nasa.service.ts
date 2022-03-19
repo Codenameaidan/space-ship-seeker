@@ -13,10 +13,10 @@ export class NasaService {
   public get_POTD(){
      return this.http.get<POTD>(this.POTD_url+"?api_key="+this.key);
   }
-  public get_POTD_date(date:Date){
+  public get_POTD_date(date:string){
     let params = new HttpParams()
     params = params.append('api_key',this.key);
-    params = params.append('date',this.formatDate(date));
+    params = params.append('date',date);
     
     return this.http.get<POTD>(this.POTD_url, { params: params })
   }

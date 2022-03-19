@@ -1,3 +1,16 @@
-<p>picture-of-the-day works!</p>
+<div id>
+    <div *ngIf="potd != undefined; else elseBlock">
+        <h1 class="text">Picture of the Day</h1>
+        <p class="text">{{potd.date}}</p>
+        <img src="{{potd.url}}" class="picture" width=50%>
+        <p class="text">{{potd.explanation}}</p>
 
-<img *ngIf = "potd != undefined" src = "{{potd.url}}">
+        <label for="oldPOTD" class="text">View a past Picture of the Day:</label>
+        <input type="date" id="oldPOTD" min="1995-06-20" max={{currentDate}} #selectedDate>
+        <button type="button" (click)="getPOTDForDay(selectedDate.value)">Fetch POTD</button>
+    </div>
+    <ng-template #elseBlock>
+        <h2 class="text">Sorry, the NASA API is down at this time. Here is a picture of a cat instead!</h2>
+        <img src="../../assets/cat.jpg" class="picture">
+</ng-template>
+</div>

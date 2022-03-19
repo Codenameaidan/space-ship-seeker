@@ -5,5 +5,5 @@ export class POTD{
   public title:string = "";
   public url:string= "";
 
-
+  public media_type:string="";
 }

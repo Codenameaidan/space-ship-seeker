@@ -14,6 +14,7 @@ export class PictureOfTheDayComponent implements OnInit {
   }
 
   public potd?: POTD;
+  public currentDate: string = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, 10);
 
   ngOnInit(): void {
     this.nasa.get_POTD().subscribe(potd =>
@@ -23,6 +24,20 @@ export class PictureOfTheDayComponent implements OnInit {
     error => {
       alert(error);
     })
+  }
+
+  getPOTDForDay(date: string): void {
+    if(date.length > 0) {
+      this.nasa.get_POTD_date(date).subscribe(potd =>
+      {
+        if(potd.media_type !== "video") {
+          this.potd = potd;
+        }
+      }, 
+      error => {
+        alert(error);
+      })
+    }
   }
 
 }

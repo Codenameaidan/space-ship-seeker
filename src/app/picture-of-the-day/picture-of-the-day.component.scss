@@ -1,0 +1,46 @@
+h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 20px;
+    margin: 25px 10% 25px 10%;
+}
+
+label {
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: underline;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 8px solid #FC3D21;
+    width: 50%;
+}
+
+input, button {
+    display: block;
+    margin : 25px auto;
+
+}
+
+button {
+    font-size: 16px;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #0B3D91;
+}
+
+button:hover {
+    background-color: #3131c5;
+  }
+
+.text {
+    display: flex;
+    justify-content: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
