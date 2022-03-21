@@ -4,6 +4,9 @@
 <app-filter></app-filter>
 
 <!---->
+
+
+<!---->
 <tr *ngFor = "let launchpad of launchpads">
     <td>{{launchpad.name + ", " + launchpad.latitude + ", " + launchpad.longitude + ": "+launchpad.launches}}</td>
 
@@ -14,5 +17,12 @@
 
 <tr *ngFor = "let starlink of starlinks">
     <p>{{starlink.id + ", " + starlink.latitude + ", " + starlink.longitude}}</p>
+
+</tr>
+
+<h3>?????</h3>
+<tr *ngFor = "let l of observatory_Locations">
+   
+    <td>{{l.latitude + " ++++++AND++++++ " + l.longitude }}</td>
 
 </tr>
