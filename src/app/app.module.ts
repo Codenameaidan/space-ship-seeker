@@ -11,6 +11,7 @@ import { AppFilterComponent } from './app-filter/app-filter.component';
 import { NearbyPlacesComponent } from './nearby-places/nearby-places.component';
 import { PictureOfTheDayComponent } from './picture-of-the-day/picture-of-the-day.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     MapComponent,
     AppFilterComponent,
     NearbyPlacesComponent,
-    PictureOfTheDayComponent
+    PictureOfTheDayComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
