@@ -13,12 +13,16 @@ label {
     text-decoration: underline;
 }
 
-img {
+img, iframe {
     display: block;
     margin-left: auto;
     margin-right: auto;
     border: 8px solid #FC3D21;
     width: 50%;
+}
+
+div {
+    padding-bottom: 5px;
 }
 
 input, button {
@@ -35,6 +39,11 @@ button {
     background-color: #0B3D91;
 }
 
+iframe {
+    width: 960px;
+    height: 540px;
+}
+
 button:hover {
     background-color: #3131c5;
   }
@@ -43,4 +52,8 @@ button:hover {
     display: flex;
     justify-content: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#cat {
+    width: 30%;
 }
