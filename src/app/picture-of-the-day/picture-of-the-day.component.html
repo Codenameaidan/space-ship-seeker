@@ -1,21 +1,21 @@
-<div id>
+<div>
     <div *ngIf="potd != undefined; else elseBlock">
         <h1 class="text">Picture of the Day</h1>
         <p class="text">{{potd.date}}</p>
-        <img *ngIf="potd.media_type == 'image'; else videoBlock" src="{{potd.url}}" width=50%>
+        <img *ngIf="potd.media_type == 'image'; else videoBlock" src="{{potd.url}}">
         <ng-template #videoBlock>
-            <iframe allow="fullscreen;" [src]="POTDVidUrl"></iframe>
+            <iframe allow="fullscreen" [src]="POTDVidUrl"></iframe>
         </ng-template>
         <p class="text">{{potd.explanation}}</p>
 
         <label for="oldPOTD" class="text">View a past Picture of the Day:</label>
-        <input type="date" id="oldPOTD" min="1995-06-20" max={{currentDate}} #selectedDate>
+        <input id="oldPOTD" type="date" min="1995-06-20" max={{currentDate}} #selectedDate>
         <button type="button" (click)="getPOTDForDay(selectedDate.value)">Fetch POTD</button>
     </div>
     <ng-template #elseBlock>
         <div>
             <h2 class="text">Sorry, the NASA API is down at this time. Here is a picture of a cat instead!</h2>
-            <img src="../../assets/cat.jpg" id="cat">
+            <img id="cat" src="../../assets/cat.jpg">
         </div>">
     </ng-template>
 </div>
