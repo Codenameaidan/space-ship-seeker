@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { POTD } from 'src/models/POTD';
 import { NasaService } from '../nasa.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -15,8 +15,8 @@ export class PictureOfTheDayComponent implements OnInit {
   }
 
   public potd?: POTD;
+  public POTDVidUrl?: SafeResourceUrl;
   public currentDate: string = (new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().slice(0, 10);
-  POTDVidUrl?: SafeResourceUrl;
 
   ngOnInit(): void {
     this.nasa.get_POTD().subscribe(potd =>
@@ -32,10 +32,10 @@ export class PictureOfTheDayComponent implements OnInit {
     if(date.length > 0) {
       this.nasa.get_POTD_date(date).subscribe(potd =>
       {
+        this.potd = potd
         if(potd.media_type == 'video') {
           this.POTDVidUrl = this._sanitizer.bypassSecurityTrustResourceUrl(potd.url);
         }
-        this.potd = potd;
       }, 
       error => {
         alert(error);
