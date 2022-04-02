@@ -5,7 +5,7 @@
 <app-filter></app-filter>
 
 
-<tr *ngFor = "let launchpad of launchpads">
+<tr *ngFor = "let launchpad of filtered_launchpads">
     <td>{{launchpad.name + ", " + launchpad.latitude + ", " + launchpad.longitude + ": "+launchpad.launches}}</td>
 
 </tr>
@@ -13,17 +13,37 @@
 
 <h2 *ngIf = "launch != undefined" >{{launch.name}}</h2>
 
-<tr *ngFor = "let starlink of starlinks">
+<tr *ngFor = "let starlink of filtered_starlinks">
     <p>{{starlink.id + ", " + starlink.latitude + ", " + starlink.longitude}}</p>
 
 </tr>
 
 <h3>?????</h3>
-<tr *ngFor = "let l of observatory_Locations">
+<tr *ngFor = "let l of filtered_observatories">
    
-    <td>{{l.latitude + " ++++++AND++++++ " + l.longitude }}</td>
+    <td>{{l.id + " ??? " + l.latitude + " ++++++AND++++++ " + l.longitude }}</td>
 
 </tr>
+
 -->
 
 <div id="viewDiv"></div>
+
+<div id ="filter" draggable="true">
+    <form>
+        <input id = "nasa" type = "checkbox" checked = True>
+        <label for="nasa">Nasa Satellites</label><br>
+
+        <input id = "spacex" type = "checkbox" checked = True>
+        <label for="spacex"> SpaceX Satellites </label><br>
+
+        <input id = "spacex-launchpads" type = "checkbox" checked = True>
+        <label for="spacex-launchpads"> SpaceX Launchpads </label><br>
+
+        <label for="name"> With name </label>
+        <input id = "name"><br>
+        
+
+        <button type='button' (click)="filter()">Filter</button>
+    </form>
+</div>
