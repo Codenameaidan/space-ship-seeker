@@ -11,6 +11,8 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'map', component: MapComponent },
   { path: 'potd', component: PictureOfTheDayComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
+  
 
 ];
 
