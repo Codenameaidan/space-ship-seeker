@@ -34,4 +34,39 @@ li:hover {
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
     background-color: black;
+    font-size: 1.25em;
+}
+
+@media only screen and (max-width: 1010px) {
+    #projectName {
+        display: none;
+    } 
+    
+    li {
+        width: 24.8%;
+    }  
+}
+
+@media only screen and (max-width: 774px) {
+    li a {
+          font-size: 0.75em;
+    }
+}
+
+@media only screen and (max-width: 534px) {
+    ul {
+        width: 60%;
+        margin: 10px auto 10px auto;
+    } 
+    
+    li {
+        float: none;
+        width: 100%;
+        border-bottom: 1px solid white;
+        border-right: none;
+    }
+
+    li a {
+        font-size: 0.85em;
+    }
 }
