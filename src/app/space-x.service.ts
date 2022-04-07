@@ -20,6 +20,12 @@ export class SpaceXService {
   {
     return this.http.get<SpaceXLaunch>(this.base_url+"v5/launches/"+id);
   }
+
+  public get_launches(id:string)
+  {
+    return this.http.get<SpaceXLaunch>(this.base_url+"v5/launches/");
+  }
+
   public get_all_starlink(){
     return this.http.get<SpaceXStarLink[]>(this.base_url+"v4/starlink/");
   }
