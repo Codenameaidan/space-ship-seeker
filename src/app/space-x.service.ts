@@ -12,7 +12,8 @@ export class SpaceXService {
   
   constructor(private http:HttpClient) { }
 
-  public get_all_launchpads(){
+  public get_all_launchpads()
+  {
      return this.http.get<SpaceXLaunchpad[]>(this.base_url+"v4/launchpads");
   }
 
@@ -21,9 +22,9 @@ export class SpaceXService {
     return this.http.get<SpaceXLaunch>(this.base_url+"v5/launches/"+id);
   }
 
-  public get_launches(id:string)
+  public get_all_launches()
   {
-    return this.http.get<SpaceXLaunch>(this.base_url+"v5/launches/");
+    return this.http.get<SpaceXLaunch[]>(this.base_url+"v5/launches/");
   }
 
   public get_all_starlink(){
