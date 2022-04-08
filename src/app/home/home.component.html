@@ -1,26 +1,75 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset ="utf-8">
-        <meta name="keywords" content="Space, launch, stellite">
-        <meta name="author" content="Peiyi Wu">
-        <meta http-equiv="refresh" content="30">
-        <style>
-</style>
-        <title>Space-Ship-Seeker-Homepage</title>
-        </head>
-    <body id="grad1">
-        <p style="color:rgba(255, 255, 255, 0.911)">
-        Welcom to Space-Ship-Seeker
-        </p>
-<<<<<<< Updated upstream
-=======
-        <p> <a href="http://localhost:4200/home">·Home</a></p>
-        <p> <a href="http://localhost:4200/potd"> ·Picture Of The Day</a></p>
-        <p> <a href="http://localhost:4200/map"> ·Map</a></p>
-        <p> <a href="http://localhost:4200/nearby-places"> ·Nearby-places</a></p> 
-        
-        
->>>>>>> Stashed changes
-    </body>    
-</html>  
+<div id="page">
+    <div id="top">
+        <ul>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+            <li>
+                <figure>
+                    <img src="../../assets/placeholder.png">
+                    <figcaption>Caption</figcaption>
+                </figure>
+            </li>
+        </ul>
+        <img id="earth" src="../../assets/earth.jpg">
+        <p id="goCaption">Find the locations of spaceships and satellites with our interactive map</p>
+        <form action="/map">
+            <input type="submit" value="Go!"/>
+        </form>
+    </div>
+    <div id="middle">
+        <p>Soonest launch information will go in this middle div</p>
+    </div>
+    <div id="bottom">
+        <div *ngIf="potd != undefined;">
+            <h1>Picture of the Day preview</h1>
+            <img *ngIf="potd.media_type == 'image'; else videoBlock" src="{{potd.url}}" id="potd">
+            <ng-template #videoBlock>
+                <iframe allow="fullscreen" [src]="POTDVidUrl"></iframe>
+            </ng-template>
+            <form action="/potd">
+                <input type="submit" value="See more"/>
+            </form>
+        </div>
+        <p>Team info could go here, but I think Qirui may be adding that to about page</p>
+    </div>
+<div>

@@ -1,10 +1,84 @@
-#grad1 {
-    height:1400px;
-    background-image: linear-gradient(#3379e9, #1e0c49);
+
+ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 
-h1{
-    color: aliceblue;
-    font-size: 40px;
+li {
+    display: inline-block;
+    width: 11.9%;
 }
 
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+form input {
+    font-size: 1.5em;
+    padding: 0 15px;
+    display: block;
+    margin: auto;
+}
+
+figcaption {
+    color: white;
+    font-style: italic;
+    font-size: 0.75em;
+    padding: 2px;
+}
+
+li figure {
+    margin: 5px 2px;
+}
+
+li figure img {
+    max-height: 100px;
+    width: 100%;
+}
+
+#earth {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    min-width: 400px;
+}
+
+#potd {
+    display: block;
+    margin: 0 auto 10px auto;
+    max-height: 500px;
+}
+
+#goCaption {
+    text-align: center;
+    color: white;
+    font-size: 1.5em;
+    margin: -0.5em 0 1em 0;
+}
+
+#page {
+    margin-left: -8px;
+    height: 300%;
+    background-color: gray;
+}
+
+#top {
+    background-color: black;
+    width: 100%; 
+    height: 33%;
+}
+
+#middle {
+    background-color: whitesmoke;
+    width: 100%; 
+    height: 20%;
+}
+
+#bottom {
+    background-color: whitesmoke;;
+    width: 100%; 
+    height: 33%;
+}
