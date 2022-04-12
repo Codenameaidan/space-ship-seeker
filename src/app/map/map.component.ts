@@ -15,6 +15,8 @@ import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 import Point from '@arcgis/core/geometry/Point';
 import LayerList from '@arcgis/core/widgets/LayerList';
 import Search from '@arcgis/core/widgets/Search';
+import { filter, map } from 'rxjs/operators';
+
 //    require(["esri/config", "esri/rest/locator", "esri/Map", "esri/views/SceneView", "esri/Graphic", "esri/layers/GraphicsLayer"], 
 //(esriConfig, locator, Map, SceneView, Graphic, GraphicsLayer) => {
 //import { firstValueFrom } from 'rxjs';
@@ -49,6 +51,8 @@ export class MapComponent implements OnInit {
   public graphicsLayer = new GraphicsLayer();
   public graphicsLayerNasa = new GraphicsLayer();
   public graphicsLayerLaunch = new GraphicsLayer();
+  public search = new Search();
+  public static valueT = new String();
   ngOnInit(): void {
     /*
     //Here's how you can get all the launchpads
@@ -105,46 +109,63 @@ export class MapComponent implements OnInit {
       center: [-118.244, 34.052],
       scale: 50000000,
     });
+  
 
     view.when(() => {
       const layerList = new LayerList({
         view: view
       });
-
+      const search = new Search({
+        view: view,
+        locationEnabled : false,
+        suggestionsEnabled: false,
+        includeDefaultSources: false,
+        allPlaceholder: "Enter Name",
+      });
+      
       // Add the search widget to the top right corner of the view
   
-     
+       this.search = search;
+      search.on("search-start",() => this.filter(search))
 
+      view.ui.add(search, "top-right");
       view.ui.add(layerList, "top-right");
+     
     });
 
 
-
+   
     map.add(this.graphicsLayer);
     map.add(this.graphicsLayerNasa);
     map.add(this.graphicsLayerLaunch);
-
+    this.DataSet();
     this.update_everything();
   }
+async DataSet()
+{
+  let response = await this.spaceX.get_all_launchpads().toPromise();
+  this.launchpads = response;
+
+  response = await this.spaceX.get_all_starlink().toPromise();
+  this.starlinks = response;
+
+  let response2 = await this.nasa.get_observatories().toPromise();
+  response2 = response2.filter(x => new Date(x.EndTime[1]) > new Date())
+  this.observatory_Locations = await this.nasa.get_locations(response2).toPromise();
+
+  this.filtered_launchpads = this.launchpads;
+  this.filtered_observatories = this.observatory_Locations;
+  this.filtered_starlinks = this.starlinks;
+}
 
   async update_everything() {
-    let response = await this.spaceX.get_all_launchpads().toPromise();
-    this.launchpads = response;
-
-    response = await this.spaceX.get_all_starlink().toPromise();
-    this.starlinks = response;
-
-    let response2 = await this.nasa.get_observatories().toPromise();
-    response2 = response2.filter(x => new Date(x.EndTime[1]) > new Date())
-    this.observatory_Locations = await this.nasa.get_locations(response2).toPromise();
-
-    this.filtered_launchpads = this.launchpads;
-    this.filtered_observatories = this.observatory_Locations;
-    this.filtered_starlinks = this.starlinks;
-
-
-
-    var x = 0;
+    
+   
+    
+    this.graphicsLayer.removeAll();
+    this.graphicsLayerLaunch.removeAll();
+    this.graphicsLayerNasa.removeAll();
+  if(this.filtered_observatories!=null)
     this.filtered_observatories.forEach(element => {
       if (element.latitude != null && element.longitude != null) {
 
@@ -180,12 +201,13 @@ export class MapComponent implements OnInit {
           popupTemplate: popupTemplate
         });
         this.graphicsLayerNasa.add(pointGraphic);
-        x = x + 1;
+
       }
 
     });
-
+    if(this.filtered_starlinks!=null)
     this.filtered_starlinks.forEach(element => {
+     
       const point = new Point({ //Create a point
         latitude: element.latitude,
         longitude: element.longitude,
@@ -217,9 +239,9 @@ export class MapComponent implements OnInit {
         popupTemplate: popupTemplate
       });
       this.graphicsLayer.add(pointGraphic);
-      x = x + 1;
-    });
 
+    });
+    if(this.filtered_launchpads!=null)
     this.filtered_launchpads.forEach(element => {
       const point = new Point({ //Create a point
         latitude: element.latitude,
@@ -252,33 +274,37 @@ export class MapComponent implements OnInit {
         popupTemplate: popupTemplate
       });
       this.graphicsLayerLaunch.add(pointGraphic);
-      x = x + 1;
+
     });
   }
 
-  async filter() {
+  async filter(s: any) {
     //await this.update_everything();
 
     //Record whether checkboxes are selected
-    this.showLaunchpads = (<HTMLInputElement>document.getElementById("spacex-launchpads")).checked;
-    this.showStarlink = (<HTMLInputElement>document.getElementById("spacex")).checked;
-    this.showNasa = (<HTMLInputElement>document.getElementById("nasa")).checked;
+    //this.showLaunchpads = (<HTMLInputElement>document.getElementById("spacex-launchpads")).checked;
+  //  this.showStarlink = (<HTMLInputElement>document.getElementById("spacex")).checked;
+  //  this.showNasa = (<HTMLInputElement>document.getElementById("nasa")).checked;
 
     //Filter by name (ID in some situations)
-    let name = (<HTMLInputElement>document.getElementById("name")).value;
+    let name = s.searchTerm;
     if (name != null) {
-      if (this.launchpads)
-        this.filtered_launchpads = this.launchpads.filter(item => item!.name!.includes(name));
-      if (this.observatory_Locations)
-        this.filtered_observatories = this.observatory_Locations.filter(item => item!.id!.includes(name));
-      if (this.starlinks)
-        this.filtered_starlinks = this.starlinks.filter(item => item!.id!.includes(name));
+   
+        this.filtered_launchpads = this.launchpads?.filter(item => item!.name!.includes(name));
+
+        this.filtered_observatories = this.observatory_Locations?.filter(item => item!.id!.includes(name));
+
+        this.filtered_starlinks = this.starlinks?.filter(item => item!.id!.includes(name));
     } else {
       this.filtered_launchpads = this.launchpads;
       this.filtered_observatories = this.observatory_Locations;
       this.filtered_starlinks = this.starlinks;
     }
-
+  
+   // (<HTMLInputElement>document.getElementById("name")).value = ;
+    await this.update_everything();
+  
   }
 
+ 
 }
