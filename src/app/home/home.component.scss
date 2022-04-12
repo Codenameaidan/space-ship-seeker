@@ -24,8 +24,8 @@ form input {
 }
 
 figcaption {
-    color: white;
-    font-style: italic;
+    color: rgb(246, 246, 246);
+    font-style: Verdana;
     font-size: 0.75em;
     padding: 2px;
 }
@@ -54,14 +54,22 @@ li figure img {
 
 #goCaption {
     text-align: center;
-    color: white;
+    color: rgb(246, 240, 240);
     font-size: 1.5em;
-    margin: -0.5em 0 1em 0;
+    margin: -0.4em 0 1em 0;
+}
+
+
+#goCaption2 {
+    text-align: center;
+    color: rgb(246, 240, 240);
+    font-size: 2.3em;
+    margin: -0.4em 0 1em 0;
 }
 
 #page {
     height: 300%;
-    background-color: gray;
+    background-color: rgb(224, 217, 217);
 }
 
 #top {
