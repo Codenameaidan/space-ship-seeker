@@ -95,9 +95,9 @@ export class MapComponent implements OnInit {
       
     })
     */
-    this.graphicsLayer.title = "SpaceX Sattelites";
+    this.graphicsLayer.title = "SpaceX Satellites";
     this.graphicsLayerLaunch.title = "LaunchPads";
-    this.graphicsLayerNasa.title = "Nasa Sattelites";
+    this.graphicsLayerNasa.title = "Nasa Satellites";
     const map = new ArcGISMap({
       basemap: "topo-vector",
       ground: "world-elevation"
@@ -159,13 +159,11 @@ async DataSet()
   this.update_everything();
 }
 
-  async update_everything() {
-    
-   
-    
+  async update_everything() { 
     this.graphicsLayer.removeAll();
     this.graphicsLayerLaunch.removeAll();
     this.graphicsLayerNasa.removeAll();
+
   if(this.filtered_observatories!=null)
     this.filtered_observatories.forEach(element => {
       if (element.latitude != null && element.longitude != null) {
@@ -190,8 +188,8 @@ async DataSet()
           content: "{Description}"
         }
         const attributes = {
-          Name: "" + element.id + "  " + this.filtered_observatories?.length,
-          Description: "This is a really good description" + element.latitude?.length
+          Name: "" + element.id,// + this.filtered_observatories?.length,
+          Description: "Type: NASA observatory.\nLatitude: " + element.latitude[0] +"\nLongitude: "+element.longitude[0],
         }
 
         const pointGraphic = new Graphic({
@@ -228,8 +226,10 @@ async DataSet()
         content: "{Description}"
       }
       const attributes = {
-        Name: "" + element.id+" "+element.launch+" "+element.version,
-        Description: "This is a really good description" + element.velocity_kms
+        Name: "" + element.id,//+" "+element.launch+" "+element.version,
+        Description: "Type: SpaceX starlink satellite.\nLatitude: " +element.latitude 
+          +"\nLongitude: " +element.longitude
+          +"\nVelocity(kms): " + element.velocity_kms + ""
       }
 
       const pointGraphic = new Graphic({
@@ -264,7 +264,8 @@ async DataSet()
       }
       const attributes = {
         Name: "" + element.full_name,
-        Description: "This is a really good description" + element.rockets
+        Description: "Type: SpaceX Launchpad.\nAbbreviated name:" + element.name
+        +"\nStatus: " +element.status
       }
 
       const pointGraphic = new Graphic({
@@ -280,29 +281,24 @@ async DataSet()
   }
 
   async filter(s: any) {
-    //await this.update_everything();
-
-    //Record whether checkboxes are selected
-    //this.showLaunchpads = (<HTMLInputElement>document.getElementById("spacex-launchpads")).checked;
-  //  this.showStarlink = (<HTMLInputElement>document.getElementById("spacex")).checked;
-  //  this.showNasa = (<HTMLInputElement>document.getElementById("nasa")).checked;
 
     //Filter by name (ID in some situations)
-    let name = s.searchTerm;
+    let name = s.searchTerm.toLowerCase();
     if (name != null) {
    
-        this.filtered_launchpads = this.launchpads?.filter(item => item!.name!.includes(name));
+        this.filtered_launchpads = 
+          this.launchpads?.filter(item => item!.name!.toLowerCase().includes(name) || item!.full_name!.toLowerCase().includes(name));
 
-        this.filtered_observatories = this.observatory_Locations?.filter(item => item!.id!.includes(name));
 
-        this.filtered_starlinks = this.starlinks?.filter(item => item!.id!.includes(name));
+        this.filtered_observatories = this.observatory_Locations?.filter(item => item!.id!.toLowerCase().includes(name));
+
+        this.filtered_starlinks = this.starlinks?.filter(item => item!.id!.toLowerCase().includes(name));
     } else {
       this.filtered_launchpads = this.launchpads;
       this.filtered_observatories = this.observatory_Locations;
       this.filtered_starlinks = this.starlinks;
     }
   
-   // (<HTMLInputElement>document.getElementById("name")).value = ;
     await this.update_everything();
   
   }
