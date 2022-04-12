@@ -139,7 +139,6 @@ export class MapComponent implements OnInit {
     map.add(this.graphicsLayerNasa);
     map.add(this.graphicsLayerLaunch);
     this.DataSet();
-    this.update_everything();
   }
 async DataSet()
 {
@@ -156,6 +155,8 @@ async DataSet()
   this.filtered_launchpads = this.launchpads;
   this.filtered_observatories = this.observatory_Locations;
   this.filtered_starlinks = this.starlinks;
+
+  this.update_everything();
 }
 
   async update_everything() {
