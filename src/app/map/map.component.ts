@@ -15,7 +15,9 @@ import GraphicsLayer from "@arcgis/core/layers/GraphicsLayer";
 import Point from '@arcgis/core/geometry/Point';
 import LayerList from '@arcgis/core/widgets/LayerList';
 import Search from '@arcgis/core/widgets/Search';
-import { filter, map } from 'rxjs/operators';
+import Locate from '@arcgis/core/widgets/Locate';
+
+
 
 //    require(["esri/config", "esri/rest/locator", "esri/Map", "esri/views/SceneView", "esri/Graphic", "esri/layers/GraphicsLayer"], 
 //(esriConfig, locator, Map, SceneView, Graphic, GraphicsLayer) => {
@@ -108,6 +110,7 @@ export class MapComponent implements OnInit {
       container: "viewDiv",
       center: [-118.244, 34.052],
       scale: 50000000,
+      qualityProfile: "low"
     });
   
 
@@ -122,7 +125,28 @@ export class MapComponent implements OnInit {
         includeDefaultSources: false,
         allPlaceholder: "Enter Name",
       });
-      
+      const markerSymbol = {
+        type: "picture-marker",
+        color: [255, 255, 0],  // Orange
+        url:"/assets/Red_X.svg",
+        outline: {
+          color: [255, 255, 255], // White
+          width: 1
+        }
+      };
+      const locate = new Locate({
+        view: view,
+        graphic: new Graphic({
+         symbol: markerSymbol
+        }),
+        useHeadingEnabled: false,
+        goToOverride: function(view, options) {
+          options.target.scale = 50000000;
+          
+          return view.goTo(options.target);
+        }
+      });
+      view.ui.add(locate, "top-left");
       // Add the search widget to the top right corner of the view
   
        this.search = search;

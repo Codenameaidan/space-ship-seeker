@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { POTD } from 'src/models/POTD';
 import { NasaService } from '../nasa.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import fetch from 'node-fetch';
+//import fetch from 'node-fetch';
 import { NumberSymbol } from '@angular/common';
 import { Subscription, interval } from 'rxjs';
 
