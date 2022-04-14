@@ -59,7 +59,11 @@
         </form>
     </div>
     <div id="middle">
-        <p>Soonest launch information will go in this middle div</p>
+        <div class="timer">
+            <h1> Count down timer </h1>
+            <span id="days"> {{seconds}} </span>seconds
+            
+        </div>
     </div>
     <div id="bottom">
         <div *ngIf="potd != undefined;">
