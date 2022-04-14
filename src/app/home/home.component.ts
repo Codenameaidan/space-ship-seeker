@@ -1,4 +1,4 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { POTD } from 'src/models/POTD';
 import { NasaService } from '../nasa.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
   public potd?: POTD;
   public POTDVidUrl?: SafeResourceUrl;
 
-  public days?:number;
-  public seconds?:number;
-  public hours?:number;
-  public minites?:number;
+  public days?:any;
+  public seconds?:any;
+  public hours?:any;
+  public minites?:any;
   
 
   ngOnInit(): void {
@@ -38,6 +38,11 @@ export class HomeComponent implements OnInit {
         alert(error); 
       })
 
+      
+
+
+
+      
 
   }
   
@@ -45,7 +50,10 @@ export class HomeComponent implements OnInit {
   
 }
 
-async function getUsers() {
+
+
+
+async function getData() {
   try {
     // 👇️ const response: Response
     const response = await fetch('https://api.spacexdata.com/v4/launches/upcoming', {
@@ -61,10 +69,11 @@ async function getUsers() {
       console.log(data);
       let day = data[0]['date_unix'];
       var currentTimeInSeconds=Math.floor(Date.now()/1000);
-      const seconds = day - currentTimeInSeconds;
+      let seconds = day - currentTimeInSeconds;
     })
-
-    // 👇️ const result: GetUsersResponse
+    
+    
+    
 
     return response;
   } catch (error) {
@@ -76,9 +85,6 @@ async function getUsers() {
       return 'An unexpected error occurred';
     }
   }
-
-
-
   
 }
-getUsers();
+getData();
