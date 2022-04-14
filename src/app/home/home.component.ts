@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
   public days?:any;
   public seconds?:any;
   public hours?:any;
-  public minites?:any;
-  
+  public minutes?:any;
+  public address?:any;
 
   ngOnInit(): void {
     this.nasa.get_POTD().subscribe(potd =>
@@ -38,8 +38,8 @@ export class HomeComponent implements OnInit {
         alert(error); 
       })
 
-      this.getData();
-
+      this.getData();//.subscribe(x => { this.getData(); });;
+    
 
 
       
@@ -63,8 +63,12 @@ export class HomeComponent implements OnInit {
         console.log(data);
         let day = data[0]['date_unix'];
         var currentTimeInSeconds=Math.floor(Date.now()/1000);
-        this.seconds = day - currentTimeInSeconds;
-        //console.log(this.seconds);
+        let timeleft = day - currentTimeInSeconds;
+        this.days = Math.floor(timeleft / ( 60 * 60 * 24));
+        this.hours = Math.floor(timeleft / 3600);
+        this.minutes = Math.floor(timeleft / 60 % 60);
+        this.seconds = Math.floor(timeleft % 60);
+
       })
       
       

@@ -59,13 +59,14 @@
         </form>
     </div>
     <div id="middle">
-        <div id="middle">
             <div class="timer">
                 <h1> Count down timer </h1>
+                <span id="days"> {{days}} </span>days
+                <span id="days"> {{hours}} </span>hours
+                <span id="days"> {{minutes}} </span>minutes
                 <span id="days"> {{seconds}} </span>seconds
                 
             </div>
-        </div>
     </div>
     <div id="bottom">
         <div *ngIf="potd != undefined;">
@@ -78,7 +79,6 @@
                 <input type="submit" value="See more"/>
             </form>
         </div>
-        <p>Team info could go here, but I think Qirui may be adding that to about page</p>
     </div>
     <div id="bottom1">
         <h3>ABOUT</h3>
