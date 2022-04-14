@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
         alert(error); 
       })
 
-      
+      this.getData();
 
 
 
@@ -47,44 +47,45 @@ export class HomeComponent implements OnInit {
   }
   
   
+  async getData() {
+    try {
+      // 👇️ const response: Response
+      const response = await fetch('https://api.spacexdata.com/v4/launches/upcoming', {
+        method: 'GET',
+      })
   
-}
-
-
-
-
-async function getData() {
-  try {
-    // 👇️ const response: Response
-    const response = await fetch('https://api.spacexdata.com/v4/launches/upcoming', {
-      method: 'GET',
-    })
-
-    if (!response.ok) {
-      throw new Error(`Error! status: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`Error! status: ${response.status}`);
+      }
+  
+      //console.log(response.json());
+      response.json().then(data => {
+        console.log(data);
+        let day = data[0]['date_unix'];
+        var currentTimeInSeconds=Math.floor(Date.now()/1000);
+        this.seconds = day - currentTimeInSeconds;
+        //console.log(this.seconds);
+      })
+      
+      
+      
+  
+      return response;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log('error message: ', error.message);
+        return error.message;
+      } else {
+        console.log('unexpected error: ', error);
+        return 'An unexpected error occurred';
+      }
     }
-
-    //console.log(response.json());
-    response.json().then(data => {
-      console.log(data);
-      let day = data[0]['date_unix'];
-      var currentTimeInSeconds=Math.floor(Date.now()/1000);
-      let seconds = day - currentTimeInSeconds;
-    })
     
-    
-    
-
-    return response;
-  } catch (error) {
-    if (error instanceof Error) {
-      console.log('error message: ', error.message);
-      return error.message;
-    } else {
-      console.log('unexpected error: ', error);
-      return 'An unexpected error occurred';
-    }
   }
   
+  
 }
-getData();
+
+
+
+
