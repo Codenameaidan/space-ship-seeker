@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { POTD } from 'src/models/POTD';
 import { NasaService } from '../nasa.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import fetch from 'node-fetch';
+//import fetch from 'node-fetch';
 import { NumberSymbol } from '@angular/common';
 import { Subscription, interval } from 'rxjs';
 
@@ -44,7 +44,9 @@ export class HomeComponent implements OnInit {
    
       
     this.getData();//.subscribe(x => { this.getData(); });;
+
     console.log(this.timeleft); // not work
+
     setInterval(this.countDown, 1000);
       
 
@@ -59,7 +61,9 @@ export class HomeComponent implements OnInit {
     if(this.timeleft == 0){
         this.getData();
     }
+
     console.log(this.timeleft);// not work
+
   }
   
   
@@ -82,10 +86,12 @@ export class HomeComponent implements OnInit {
         var currentTimeInSeconds=Math.floor(Date.now()/1000);
         this.timeleft = day - currentTimeInSeconds;
         this.name = data[0]['name'];
+
         console.log(this.timeleft); // work
       })
       
       console.log(this.timeleft); // not
+
       return response;
     } catch (error) {
       if (error instanceof Error) {
