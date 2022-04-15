@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
 
   public days?:any;
   public seconds?:any;
-  public hour?:any;
+  public hours?:any;
   public minutes?:any;
   public name?:any;
   public currentTimeInSeconds?:any;
@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
   countDown(){
     this.timeleft -= 1;
     this.days = Math.floor(this.timeleft / ( 60 * 60 * 24));
-    this.hour = Math.floor(this.timeleft / 3600);
+    this.hours = Math.floor(this.timeleft / 3600);
     this.minutes = Math.floor(this.timeleft / 60 % 60);
     this.seconds = Math.floor(this.timeleft % 60);
     if(this.timeleft == 0){
