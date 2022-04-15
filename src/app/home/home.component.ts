@@ -94,7 +94,7 @@ export class HomeComponent implements OnInit {
         this.getData();
     }
 
-    console.log("小母狗佩佩任务:每天爱daddy", this.timeleft, "点");// not work
+    //console.log("任务:每天爱daddy", this.timeleft, "点");// not work
 
   }
   
