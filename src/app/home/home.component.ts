@@ -40,14 +40,9 @@ export class HomeComponent implements OnInit {
         alert(error); 
       })
 
-   
-      
     this.getData();
-
-    
+    console.log(this.timeleft);
     setInterval(() => this.countDown(), 1000);
-      
-
   }
 
   async getData() {
@@ -68,6 +63,7 @@ export class HomeComponent implements OnInit {
         var currentTimeInSeconds=Math.floor(Date.now()/1000);
         this.timeleft = day - currentTimeInSeconds;
         this.name = data[0]['name'];
+        console.log(day);
       })
       
 
@@ -87,14 +83,14 @@ export class HomeComponent implements OnInit {
   countDown() : void{
     this.timeleft -= 1;
     this.days = Math.floor(this.timeleft / ( 60 * 60 * 24));
-    this.hours = Math.floor(this.timeleft / 3600);
+    this.hours = Math.floor(this.timeleft / 3600 % 24);
     this.minutes = Math.floor(this.timeleft / 60 % 60);
     this.seconds = Math.floor(this.timeleft % 60);
     if(this.timeleft <= 0){
         this.getData();
     }
 
-    //console.log("任务:每天爱daddy", this.timeleft, "点");// not work
+    
 
   }
   
