@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
 
   constructor(public nasa: NasaService, private _sanitizer: DomSanitizer) { }
 
-
-
   public potd?: POTD;
   public POTDVidUrl?: SafeResourceUrl;
 
@@ -55,8 +53,7 @@ export class HomeComponent implements OnInit {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-  
-      
+   
       response.json().then(data => {
         console.log(data);
         let day = data[0]['date_unix'];
@@ -66,7 +63,6 @@ export class HomeComponent implements OnInit {
         console.log(day);
       })
       
-
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -76,11 +72,10 @@ export class HomeComponent implements OnInit {
         console.log('unexpected error: ', error);
         return 'An unexpected error occurred';
       }
-    }
-    
+    }  
   }
 
-  countDown() : void{
+  countDown() : void {
     this.timeleft -= 1;
     this.days = Math.floor(this.timeleft / ( 60 * 60 * 24));
     this.hours = Math.floor(this.timeleft / 3600 % 24);
@@ -89,19 +84,6 @@ export class HomeComponent implements OnInit {
     if(this.timeleft <= 0){
         this.getData();
     }
-
-    
-
   }
-  
-  
-  
-  
-  
+    
 }
-function delay(ms: number) {
-  return new Promise( resolve => setTimeout(resolve, ms) );
-}
-
-
-

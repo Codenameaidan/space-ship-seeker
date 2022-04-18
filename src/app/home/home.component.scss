@@ -14,11 +14,7 @@ h1 {
     justify-content: center;
     padding-top: 20px;
 }
-h3{
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
-}
+
 form input {
     font-size: 1.5em;
     padding: 0 15px;
@@ -55,57 +51,79 @@ li figure img {
     max-height: 500px;
 }
 
-#goCaption {
+#goCaption1 {
     text-align: center;
     color: rgb(246, 240, 240);
     font-size: 1.5em;
-    margin: -0.4em 0 1em 0;
+    margin-top: -0.5em;
 }
-
 
 #goCaption2 {
     text-align: center;
     color: rgb(246, 240, 240);
-    font-size: 2.3em;
-    margin: -0.4em 0 1em 0;
+    font-size: 2.5em;
+    margin: -0.25em 0 -0.25em 0;
+    font-weight: bold;
+}
+
+#goCaption3 {
+    text-align: center;
+    color: rgb(246, 240, 240);
+    font-size: 1.5em;
 }
 
 #page {
-    height: 300%;
+    height: 250%;
     background-color: rgb(224, 217, 217);
 }
 
 #top {
     background-color: black;
     width: 100%; 
-    height: 35%;
+    height: 46%;
 }
 
 #middle {
     background-color: whitesmoke;
     width: 100%; 
-    height: 15%;
+    height: 11%;
 }
 
 #bottom {
     background-color: whitesmoke;;
     width: 100%; 
-    height: 33%;
-}
-#bottom1 {
-    width: 100%;
-    height: 40%;
+    height: 38%;
 }
 
-.timer {
+#timer {
     text-align: center;
     font-family: Arial, sans-serif;
     font-size: 1.4em;
     letter-spacing: -1px;
+    margin-top: -0.4em;
 }
 
-
-.timer span {
+#timer span {
     font-size: 2em;
     margin: 0 3px 0 15px;
-  }
+}
+
+#toMap {
+    background-color: rgb(97, 243, 40);
+    border: 2px solid white;
+    font-size: 2em;
+    margin-top: 0.5em;
+}
+
+#toMap:hover {
+    background-color: rgb(64, 202, 64);
+}
+
+#toPOTD {
+    font-size: 1.75em;
+    margin-top: 1em;
+}
+
+#potd {
+    border: 4px solid #0B3D91;;
+}

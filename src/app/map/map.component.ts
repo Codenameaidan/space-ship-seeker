@@ -98,8 +98,8 @@ export class MapComponent implements OnInit {
     })
     */
     this.graphicsLayer.title = "SpaceX Satellites";
-    this.graphicsLayerLaunch.title = "LaunchPads";
-    this.graphicsLayerNasa.title = "Nasa Satellites";
+    this.graphicsLayerLaunch.title = "Launchpads";
+    this.graphicsLayerNasa.title = "NASA Observatories";
     const map = new ArcGISMap({
       basemap: "topo-vector",
       ground: "world-elevation"

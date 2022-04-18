@@ -51,21 +51,20 @@
             </li>
         </ul>
         <img id="earth" src="../../assets/earth.jpg">
-        <p id="goCaption">Find the Locations of <br>
-        <p id="goCaption2">Spaceships and Satellites<br> 
-        <p id="goCaption">with interactive map</p>
+        <p id="goCaption1">Find the locations of</p>
+        <p id="goCaption2">Spaceships and Satellites</p> 
+        <p id="goCaption3">with our interactive 3D map</p>
         <form action="/map">
-            <input type="submit" value="Go!"/>
+            <input id="toMap" type="submit" value="Go!"/>
         </form>
     </div>
     <div id="middle">
-            <div class="timer">
-                <h1> Count down timer </h1>
-                <span id="days"> {{days}} </span>days
-                <span id="days"> {{hours}} </span>hours
-                <span id="days"> {{minutes}} </span>minutes
-                <span id="days"> {{seconds}} </span>seconds
-                
+            <div id="timer">
+                <h1> Countdown to the next SpaceX launch</h1>
+                <span> {{days}} </span>days
+                <span> {{hours}} </span>hours
+                <span> {{minutes}} </span>minutes
+                <span> {{seconds}} </span>seconds               
             </div>
     </div>
     <div id="bottom">
@@ -76,20 +75,9 @@
                 <iframe allow="fullscreen" [src]="POTDVidUrl"></iframe>
             </ng-template>
             <form action="/potd">
-                <input type="submit" value="See more"/>
+                <input id="toPOTD" type="submit" value="See more!"/>
             </form>
         </div>
-    </div>
-    <div id="bottom1">
-        <h3>ABOUT</h3>
-        <p>Team member:</p> 
-        <p>Aidan Walsh </p>
-        <p> Ryan Chakov </p>
-        <p> Peiyi Wu </p>
-        <p> Justin Karli </p>
-        <p> Qirui Liu</p>
-        <p>Our project is about seeking the space ships and satellites. The project is a web application that will helps the users to search the past, present, and future rocket launches through a 3D map, and we have a filter to locate the ships and satellites easier. Finally, we have a function called Picture of the Day which could show us some pictures and articles from NASA.</p>
-       
     </div>
 <div>
 
