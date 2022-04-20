@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './about/about.component';
-import { AppFilterComponent } from './app-filter/app-filter.component';
 import { HomeComponent } from './home/home.component';
 import { MapComponent } from './map/map.component';
 import { PictureOfTheDayComponent } from './picture-of-the-day/picture-of-the-day.component';
