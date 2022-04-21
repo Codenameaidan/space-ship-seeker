@@ -6,8 +6,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 1) Ensure Angular and npm are installed.
 2) Run the following commands in the project folder:
-    npm install @arcgis/core
-    ng Serve
+    > npm install @arcgis/core
+    
+    > ng Serve
 3) Navigate to http://localhost:4200/
 
 ## Further help
