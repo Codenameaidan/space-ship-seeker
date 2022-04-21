@@ -39,7 +39,6 @@ export class HomeComponent implements OnInit {
       })
 
     this.getData();
-    console.log(this.timeleft);
     setInterval(() => this.countDown(), 1000);
   }
 
@@ -55,12 +54,15 @@ export class HomeComponent implements OnInit {
       }
    
       response.json().then(data => {
-        console.log(data);
         let day = data[0]['date_unix'];
         var currentTimeInSeconds=Math.floor(Date.now()/1000);
+
+        let index = 1
+        while(day < currentTimeInSeconds) {
+          day = data[index]['date_unix'];
+          index++;
+        }
         this.timeleft = day - currentTimeInSeconds;
-        this.name = data[0]['name'];
-        console.log(day);
       })
       
       return response;
