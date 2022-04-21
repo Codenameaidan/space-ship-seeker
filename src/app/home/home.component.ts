@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { POTD } from 'src/models/POTD';
 import { NasaService } from '../nasa.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-//import fetch from 'node-fetch';
-import { NumberSymbol } from '@angular/common';
-import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -57,7 +54,7 @@ export class HomeComponent implements OnInit {
         let day = data[0]['date_unix'];
         var currentTimeInSeconds=Math.floor(Date.now()/1000);
 
-        let index = 1
+        let index = 1;
         while(day < currentTimeInSeconds) {
           day = data[index]['date_unix'];
           index++;
