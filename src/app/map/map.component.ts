@@ -4,7 +4,6 @@ import { Observatory, ObservatoryResponse } from 'src/models/NasaSatellite';
 import { SpaceXLaunch } from 'src/models/SpaceXLaunch';
 import { SpaceXLaunchpad } from 'src/models/SpaceXLaunchpad';
 import { SpaceXStarLink } from 'src/models/SpaceXStarLink';
-import { AppFilterComponent } from '../app-filter/app-filter.component';
 import { NasaService } from '../nasa.service';
 import { SpaceXService } from '../space-x.service';
 import ArcGISMap from "@arcgis/core/Map";
