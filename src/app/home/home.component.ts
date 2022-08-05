@@ -2,9 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { POTD } from 'src/models/POTD';
 import { NasaService } from '../nasa.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-//import fetch from 'node-fetch';
-import { NumberSymbol } from '@angular/common';
-import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -14,8 +11,6 @@ import { Subscription, interval } from 'rxjs';
 export class HomeComponent implements OnInit {
 
   constructor(public nasa: NasaService, private _sanitizer: DomSanitizer) { }
-
-
 
   public potd?: POTD;
   public POTDVidUrl?: SafeResourceUrl;
@@ -41,7 +36,6 @@ export class HomeComponent implements OnInit {
       })
 
     this.getData();
-    console.log(this.timeleft);
     setInterval(() => this.countDown(), 1000);
   }
 
@@ -55,18 +49,19 @@ export class HomeComponent implements OnInit {
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-  
-      
+   
       response.json().then(data => {
-        console.log(data);
         let day = data[0]['date_unix'];
         var currentTimeInSeconds=Math.floor(Date.now()/1000);
+
+        let index = 1;
+        while(day < currentTimeInSeconds) {
+          day = data[index]['date_unix'];
+          index++;
+        }
         this.timeleft = day - currentTimeInSeconds;
-        this.name = data[0]['name'];
-        console.log(day);
       })
       
-
       return response;
     } catch (error) {
       if (error instanceof Error) {
@@ -76,11 +71,10 @@ export class HomeComponent implements OnInit {
         console.log('unexpected error: ', error);
         return 'An unexpected error occurred';
       }
-    }
-    
+    }  
   }
 
-  countDown() : void{
+  countDown() : void {
     this.timeleft -= 1;
     this.days = Math.floor(this.timeleft / ( 60 * 60 * 24));
     this.hours = Math.floor(this.timeleft / 3600 % 24);
@@ -89,19 +83,8 @@ export class HomeComponent implements OnInit {
     if(this.timeleft <= 0){
         this.getData();
     }
-
-    
-
   }
-  
-  
-  
-  
-  
+    
 }
-function delay(ms: number) {
-  return new Promise( resolve => setTimeout(resolve, ms) );
-}
-
 
 
