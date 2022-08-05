@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,6 +13,9 @@ import { NearbyPlacesComponent } from './nearby-places/nearby-places.component';
 import { PictureOfTheDayComponent } from './picture-of-the-day/picture-of-the-day.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import { CommentboxComponent } from './about/commentbox/commentbox.component';
+import { CommentsComponent } from './about/comments/comments.component';
+
 
 @NgModule({
   declarations: [
@@ -23,11 +27,16 @@ import { LoginComponent } from './login/login.component';
     AppFilterComponent,
     NearbyPlacesComponent,
     PictureOfTheDayComponent,
-    LoginComponent
+    LoginComponent,
+    CommentboxComponent,
+    CommentsComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
+    CommonModule,
     HttpClientModule
   ],
   providers: [],
