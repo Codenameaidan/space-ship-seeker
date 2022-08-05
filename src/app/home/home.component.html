@@ -51,21 +51,20 @@
             </li>
         </ul>
         <img id="earth" src="../../assets/earth.jpg">
-        <p id="goCaption">Find the Locations of <br>
-        <p id="goCaption2">Spaceships and Satellites<br> 
-        <p id="goCaption">with interactive map</p>
+        <p id="goCaption1">Find the locations of</p>
+        <p id="goCaption2">Spaceships and Satellites</p> 
+        <p id="goCaption3">with our interactive 3D map</p>
         <form action="/map">
-            <input type="submit" value="Go!"/>
+            <input id="toMap" type="submit" value="Go!"/>
         </form>
     </div>
     <div id="middle">
-            <div class="timer">
-                <h1> Count down timer </h1>
-                <span id="days"> {{days}} </span>days
-                <span id="days"> {{hours}} </span>hours
-                <span id="days"> {{minutes}} </span>minutes
-                <span id="days"> {{seconds}} </span>seconds
-                
+            <div id="timer">
+                <h1> Countdown to the next SpaceX launch</h1>
+                <span> {{days}} </span>days
+                <span> {{hours}} </span>hours
+                <span> {{minutes}} </span>minutes
+                <span> {{seconds}} </span>seconds               
             </div>
     </div>
     <div id="bottom">
@@ -76,7 +75,7 @@
                 <iframe allow="fullscreen" [src]="POTDVidUrl"></iframe>
             </ng-template>
             <form action="/potd">
-                <input type="submit" value="See more"/>
+                <input id="toPOTD" type="submit" value="See more!"/>
             </form>
         </div>
     </div>
@@ -94,6 +93,8 @@
         <p>Workflow:</p>
         <p>●Trello●Git / Github●Discord</p>
     </div>
+
+
 <div>
 
  

@@ -4,7 +4,6 @@ import { Observatory, ObservatoryResponse } from 'src/models/NasaSatellite';
 import { SpaceXLaunch } from 'src/models/SpaceXLaunch';
 import { SpaceXLaunchpad } from 'src/models/SpaceXLaunchpad';
 import { SpaceXStarLink } from 'src/models/SpaceXStarLink';
-import { AppFilterComponent } from '../app-filter/app-filter.component';
 import { NasaService } from '../nasa.service';
 import { SpaceXService } from '../space-x.service';
 import ArcGISMap from "@arcgis/core/Map";
@@ -98,8 +97,8 @@ export class MapComponent implements OnInit {
     })
     */
     this.graphicsLayer.title = "SpaceX Satellites";
-    this.graphicsLayerLaunch.title = "LaunchPads";
-    this.graphicsLayerNasa.title = "Nasa Satellites";
+    this.graphicsLayerLaunch.title = "Launchpads";
+    this.graphicsLayerNasa.title = "NASA Observatories";
     const map = new ArcGISMap({
       basemap: "topo-vector",
       ground: "world-elevation"

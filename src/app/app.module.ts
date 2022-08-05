@@ -8,11 +8,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MapComponent } from './map/map.component';
-import { AppFilterComponent } from './app-filter/app-filter.component';
-import { NearbyPlacesComponent } from './nearby-places/nearby-places.component';
 import { PictureOfTheDayComponent } from './picture-of-the-day/picture-of-the-day.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+
 import { CommentboxComponent } from './about/commentbox/commentbox.component';
 import { CommentsComponent } from './about/comments/comments.component';
 
@@ -24,10 +22,7 @@ import { CommentsComponent } from './about/comments/comments.component';
     AboutComponent,
     NavbarComponent,
     MapComponent,
-    AppFilterComponent,
-    NearbyPlacesComponent,
     PictureOfTheDayComponent,
-    LoginComponent,
     CommentboxComponent,
     CommentsComponent
   ],
