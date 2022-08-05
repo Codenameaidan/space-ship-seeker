@@ -1,20 +1,35 @@
-<h1>ABOUT:</h1>
-<h2>Our website is about the information of the Rocket.</h2>
-<h3>we have a 3D map of rocket division around the world. In the Map Page, you can place points to mark on the map. Also, you can use the filter to locate the satellites and rockets you want.</h3>  
-<h4> In the POTD page, we have a function that shows a picture and a quote. You can check the picture and the past pictures which were supplied by NASA’s API.</h4>
-  
-<p>Tech Stack</p>
-<p>Front End:</p>
-<p>●Angular
-
-    ●Typescript
+<head><script src="https://kit.fontawesome.com/054c8c2d46.js" crossorigin="anonymous"></script></head>
+<body>
     
-    ●SCSS
-    </p>
-<p>Workflow:</p>
-<p>●Trello
+    <div id ="blank"><div id="header">Comment</div><hr></div>
+    <div class=" box">
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+            
+            <div class="form-group">
+                <textarea  class="textbox" placeholder="Leave a comment" formControlName="comment" [ngClass]="{ 'is-invalid': submitted && commentForm.controls['comment'].errors }"> </textarea>
+                <div class="invalid-feedback" *ngIf="submitted && commentForm.controls['comment'].errors">
+                    Comment is required
+                    
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Post</button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="!empty">
+        <div  *ngFor="let post of commentInfo;let i = index;">
+            <div class="combox">
+                <p id="contend">{{post.commentTxt}}</p>
+                <div class="actions">
+                    <span>{{post.currentDate | date: 'dd/MM/yyyy'}}</span>
+                    <div class="divide"></div>
+                    <button  (click)="removeComment(i)" >remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    ●Git / Github
-    
-    ●Discord
-    </p>
+</body>
+        
+

@@ -1,3 +1,72 @@
-h1{
-    font-size: 50px;
+body{
+    background-color: rgb(4, 25, 44);
+    height: 200%;
+}
+#blank{
+    padding: 7px 25px;
+    margin: 10px;
+}
+
+.box {
+    padding: 7px 20px;
+    margin: 35px;
+    width: 87%;
+    background-color: rgb(65, 113, 155);
+    border-radius: 20px;
+    position:fixed;
+    bottom: 0;
+    left: 10px;
+    right:10px;
+    border:3px solid black;
+    text-align: center;
+    display: inline;
+}
+
+#header{
+    color: rgb(248, 248, 249);
+    font-size: 2.3em;
+}
+
+textarea.textbox{
+    resize:none;
+    width: 90%;
+    padding: 0.47rem 0.70rem;
+    height: 80px;
+    font-size: 1.3rem;
+    margin: 12px;
+    overflow: auto;
+    background-color: transparent;
+    color: aliceblue;
+    border: 2px solid aliceblue;
+}
+::placeholder {
+    color: rgb(185, 189, 192);
+    opacity: 1; /* Firefox */
+  }
+.combox {
+    padding-right: 3rem;
+    padding-left: 3rem;
+    padding: 3px 20px;
+    margin: 35px;
+    background-color: rgb(65, 113, 155);
+    border-radius: 20px;
+}
+#contend{
+    color: aliceblue;
+    font-size: 1.3em;
+}
+#right{
+    margin-right: 2px;
+}
+.actions{
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.divide{
+    margin: 0 5px;
+    width: 1px;
+    height: 20px;
+    background: #ccc;
+    display: inline-block;
+    vertical-align: middle;
 }

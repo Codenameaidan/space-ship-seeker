@@ -1,33 +1,24 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-interface commentinfo {
-  commentId: number;
-  currentDate: any;
-  commentTxt: string;
-}
-@Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
-})
 
-export class AboutComponent implements OnInit {
-  comments= "";
-  count=0;
+@Component({
+  selector: 'app-commentbox',
+  templateUrl: './commentbox.component.html',
+  styleUrls: ['./commentbox.component.scss']
+})
+export class CommentboxComponent implements OnInit {
+  
+  
   commentForm= new FormGroup({});
-  commentInfo: Array<commentinfo> = [];
+  commentInfo: Array<object> = [];
   submitted: Boolean = false; 
   public id = 0;
-  empty:boolean=true;
-  
+  @Output() usercomment = new EventEmitter();
 
-  
   constructor(private formBuilder: FormBuilder) { }
 
-  ngOnInit(): void {
-    this.count = 0
+  ngOnInit() {
     this.createForm();
-    
   }
 
   createForm() {
@@ -47,20 +38,10 @@ export class AboutComponent implements OnInit {
         commentId : this.id++,
         currentDate : new Date(),
         commentTxt: this.commentForm.controls['comment'].value,
-    });
-      this.empty=false;
+      });
+      this.usercomment.emit(this.commentInfo);
     }
-    console.log(this.commentInfo[0]);
-    console.log(this.commentInfo[0].commentTxt);
-    
-    return;
+    return console.log(this.commentForm.get);
   }
-
-  removeComment(i:number){
-    this.commentInfo.splice(i, 1);
-    if(this.commentInfo.length<1){
-      this.empty = false;
-    }
-  }
-}
  
+}
